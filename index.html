@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+                .clockcontainer{
+                    position: relative;
+                    width: 40vw;
+                    height: 40vw;
+                    margin: auto;
+                    background: url(img1.jpg) no-repeat;
+                    background-size: 100%;
+                }
+
+                #hour,#minute,#second{
+                    position: absolute;
+                    border-radius: 10px;
+                    background: red;
+                    transform-origin: bottom;
+                }
+
+                #hour{
+                    width: 1.8%;
+                    height: 25%;
+                    top: 25%;
+                    left: 48.8%;
+                    opacity: 0.8;
+                }
+
+                #minute{
+                    width: 1.8%;
+                    height: 35%;
+                    top: 15%;
+                    left: 50%;
+                    opacity: 0.8;
+                }
+
+                #second{
+                    width: 1.8%;
+                    height: 40%;
+                    top: 10%;
+                    left: 50%;
+                    opacity: 0.8;
+                }
+    </style>
+</head>
+<body>
+
+            <div class="clockcontainer">
+                <div id="hour">
+
+                </div>
+                <div id="minute"></div>
+                <div id="second"></div>
+            </div>
+
+
+            <script>
+setInterval(() => {
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    let hoursRotation = 30 * hours + minutes / 2;
+    let minutesRotation = 6 * minutes;
+    let secondsRotation = 6 * seconds;
+
+    document.querySelector("#hour").style.transform = `rotate(${hoursRotation}deg)`;
+    document.querySelector("#minute").style.transform = `rotate(${minutesRotation}deg)`;
+    document.querySelector("#second").style.transform = `rotate(${secondsRotation}deg)`;
+
+}, 1000);
+
+                
+            </script>
+</body>
+</html>
